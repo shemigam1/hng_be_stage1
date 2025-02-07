@@ -18,7 +18,7 @@ app.get("/api/classify-number", async (req, res) => {
 
     const numberData = await (await axios.get(`http://numbersapi.com/${number}/math?json`)).data
     // const numberData = response.json()
-    console.log(numberData);
+    // console.log(numberData);
 
     let props = [checkEven(number)]
     if (checkArmstrong(number)) {
