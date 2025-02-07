@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: false }))
 app.get("/api/classify-number", async (req, res) => {
     const { number } = req.query
     if (!number || isNaN(number)) {
-        return res.status(400).json({ error: "true", number: number })
+        return res.status(400).json({ error: true, number: number })
     }
 
     const numberData = await (await axios.get(`http://numbersapi.com/${number}/math?json`)).data

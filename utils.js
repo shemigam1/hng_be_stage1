@@ -41,7 +41,7 @@ export const checkArmstrong = (num) => {
         temp = parseInt(temp / 10);
     }
 
-    console.log(sum == num);
+    // console.log(sum == num);
 
     if (sum == num) {
         return ['armstrong', checkEven(num)]
