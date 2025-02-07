@@ -13,25 +13,22 @@ app.use(express.urlencoded({ extended: false }))
 app.get("/api/classify-number", async (req, res) => {
     const { number } = req.query
     if (!number || isNaN(number)) {
-        return res.status(400).json({ number: 'alphabet', error: "true" })
+        return res.status(400).json({ number: number, error: "true" })
     }
 
     const numberData = await (await axios.get(`http://numbersapi.com/${number}/math?json`)).data
     // const numberData = response.json()
     // console.log(numberData);
 
-    let props = [checkEven(number)]
-    if (checkArmstrong(number)) {
-        props.push('armstrong')
-    }
+
 
 
 
     const data = {
-        number: number,
+        number: parseInt(number),
         is_prime: checkPrime(number),
         is_perfect: isPerfectNumber(number),
-        properties: props,
+        properties: checkArmstrong(number),
         digit_sum: digitSum(number),  // sum of its digits
         fun_fact: numberData.text //gotten from the numbers API
     }

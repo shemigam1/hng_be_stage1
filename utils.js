@@ -32,14 +32,20 @@ export const isPerfectNumber = (n) => {
 }
 
 export const checkArmstrong = (num) => {
-    const digits = num.toString().split('');
-    const order = digits.length;
-    const sum = digits.reduce(
-        (acc, digit) =>
-            acc + Math.pow(parseInt(digit), order), 0);
-    if (sum === num) {
-        return "armstrong";
+    const numOfDigits = num.length;
+    let sum = 0;
+    let temp = num;
+    while (temp > 0) {
+        let remainder = temp % 10;
+        sum += remainder ** numOfDigits;
+        temp = parseInt(temp / 10);
     }
+
+    console.log(sum == num);
+
+    if (sum == num) {
+        return ['armstrong', checkEven(num)]
+    } else return [checkEven(num)]
 }
 
 export const checkEven = (num) => {
